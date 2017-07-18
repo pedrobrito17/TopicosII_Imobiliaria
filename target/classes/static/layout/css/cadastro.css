@@ -1,0 +1,16 @@
+
+.div-cadastro {
+    margin-top: 20px;
+    padding: 15%; 
+    width: 50%;
+}
+
+.row-input {
+    margin: 10px;
+    font-family: 'Cabin', monospace;
+}
+
+.h3-custom-cadastro {
+    font-family: 'Cabin', serif;
+    font-size: 30px;
+}

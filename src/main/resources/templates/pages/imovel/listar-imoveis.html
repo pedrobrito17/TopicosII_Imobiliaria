@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+	
+	<body>
+		<main layout:fragment="conteudo-principal"></br>
+        	<div class="container-fluid">
+        		<div class="panel panel-default">
+		      		<div class="panel-heading">
+		        		<div class="clearfix">
+		          			<h1 class="panel-title pull-left" style="padding-top: 6px;">Imóveis</h1>
+		        		</div>
+		      		</div>		
+		      		<div class="panel-body">
+		      		 <div class="table-responsive">
+		      		 	<table class="table table-striped">
+		      		 		<thead>
+		      		 			<th>Profissional</th>
+		      		 			<th>Endereço</th>
+		      		 			<th>Bairro</th>
+		      		 			<th>Metro</th>
+		      		 			<th>Dormitórios</th>
+		      		 			<th>Suítes</th>
+		      		 			<th>Vagas</th>
+		      		 			<th>Aluguel</th>
+		      		 			<th>IPTU</th>		      		 			
+		      		 		</thead>
+		      		 		<tbody>
+		      		 			<tr th:each="im : ${imoveis}">
+		      		 				<td th:text="${im.prof.nome}" th:field="*{prof}"></td>
+		      		 				<td th:text="${im.endereco}" th:field="*{endereco}"></td>
+		      		 				<td th:text="${im.bairro}"></td>
+		      		 				<td th:text="${im.metragem}"></td>
+		      		 				<td th:text="${im.dormitorios}"></td>
+		      		 				<td th:text="${im.suites}"></td>
+		      		 				<td th:text="${im.vagas_garagem}"></td>
+		      		 				<td th:text="${im.valor_aluguel}"></td>
+		      		 				<td th:text="${im.valor_iptu}"></td>
+		      		 			</tr>
+		      		 		</tbody>
+		      		 	</table>
+					  </div>
+		      		
+		      		</div>
+		    	</div>        	
+        	</div>      
+		</main>
+	</body>
+</html>

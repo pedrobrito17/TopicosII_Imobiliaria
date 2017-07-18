@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<div th:fragment="menu-profissional">
+		<div class="row row-input">
+        	<div class="col-md-6 col-md-offset-1 div-cadastro">
+        		<ul class="nav nav-pills">
+			  		<li role="presentation" class="active"><a href="#">Meus dados</a></li>
+			  		<li role="presentation"><a href="#">Buscar imóvel</a></li>
+			  		<li role="presentation"><a th:href="@{/kyzimobiliaria/cadastroimovel/{id}(id=${profissional.id_profissional})}">Cadastrar imóvel</a></li>
+			  		<li role="presentation"><a href="#" data-toogle="modal" id="myBtn" >Excluir conta</a></li>			   
+				</ul>   	
+			</div>
+    	</div></br>
+	</div>
+	
+	<div th:fragment="menu-cliente">
+		<div class="row row-input">
+        	<div class="col-md-6 col-md-offset-1 div-cadastro">
+       			<ul class="nav nav-pills">
+				  <li role="presentation" class="active"><a href="#">Meus dados</a></li>
+				  <li role="presentation"><a href="#">Buscar imóvel</a></li>
+				  <li role="presentation"><a href="#" data-toogle="modal" id="myBtn" >Excluir conta</a></li>			   
+				</ul>   	
+        	</div>
+    	</div></br>	
+	</div>
+
+</html>

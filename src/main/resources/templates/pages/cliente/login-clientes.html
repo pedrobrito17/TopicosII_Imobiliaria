@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+	<head>
+		<title>KYZ Imobiliária</title>
+        
+        <meta charset="utf-8">
+
+		<! Garante a renderização para diferentes tamanho de tela -->
+		<meta name="viewport" content="width=device-width , initial-scale=1"/>
+
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}" media="screen"/>
+
+		<!-- Meu css -->
+		<link type="text/css" rel="stylesheet" th:href="@{/layout/css/meucss.css}"/>
+		<link type="text/css" rel="stylesheet" th:href="@{/layout/css/clientes.css}"/>
+        
+        <!-- Adiciona as fontes ao projeto -->
+        <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet"/> 
+        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"/> 
+        
+        <!-- Adiciona icones ao projeto -->
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+	</head>
+	
+	<body style="background: #f9f9f9;">
+		<main>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="div-sigla">
+                        <h1 class="sigla-login">KYZ</h1>
+                        <h3 class="hidden-xs font-style-logo">IMOBILIÁRIA</h3>
+                        <h5 class="visible-xs font-style-logo">IMOBILIÁRIA</h5> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="div-login-clientes">                      
+                        <form th:method="post" th:action="@{/kyzimobiliaria/entrar}" th:object="${cliente}">
+                            <div class="form-group">
+                                <label class="label-font-login">E-mail</label>
+                                <input type="email" class="form-control" th:field="*{email}"/>
+                                <label style="margin-top:15px;" class="label-font-login">Senha</label>
+                                <input type="password" class="form-control" th:field="*{senha}"/>
+                                <button type="submit" class="btn btn-success btn-login">Entrar</button>
+                                <a href="#" class="link-login">Esqueceu a senha?</a>
+                            </div>
+                        </form>        
+                    </div>                
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="div-login-clientes">
+                        <h5 class="label-font-login center">Não possui conta? <a th:href="@{/kyzimobiliaria/cadastro-cliente}">Cadastre-se</a></h5>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-md-offset-3">      
+        		<div th:replace="default/mensagens-de-alerta :: mensagem-erro-simples"></div>
+			</div>
+            
+        </div>
+        </br>
+        <div class="row">
+            	<div class="col-md-6 col-md-offset-3">
+            		<div class="alert alert-danger alert-dismissible" th:if="${mensagem} != null">
+   						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           				<span th:text="${mensagem}">Erro</span>            	
+            		</div>
+        </div>
+		
+		
+		</main>	
+		<script th:src="@{/layout/js/jquery-3.1.1.min.js}"></script> <!--Adiciona o JQuery -->
+        <script th:src="@{/layout/js/bootstrap.min.js}"></script> <!-- Adiciona o javascript Bootstrap -->
+        <script th:src="@{/layout/js/meujs.js}"></script> <!-- Adiciona meu JS -->
+	</body>
+</html>

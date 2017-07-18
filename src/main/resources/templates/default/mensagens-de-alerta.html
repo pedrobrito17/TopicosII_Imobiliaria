@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="mensagem-sucesso">
+  <div th:if="${!#strings.isEmpty(mensagem)}" class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <span th:text="${mensagem}"></span>
+
+  </div>
+</div>
+
+<div th:fragment="mensagem-erro-simples">
+  <div th:if="${!#strings.isEmpty(mensagem_erro)}" class="alert alert-danger alert-dismissible" role="alert" style="margin-top: 20px">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <span th:text="${mensagem_erro}"></span>
+  </div>
+</div>
+
+
+<div th:fragment="mensagem-erro">
+  <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    	<ul>
+    		<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}">...</li>
+    	</ul>
+  </div>
+</div>
+
+</html>

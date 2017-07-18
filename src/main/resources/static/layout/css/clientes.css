@@ -1,0 +1,52 @@
+
+.div-login-clientes {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 15px;
+    width: 340px;
+    height: auto;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d8dee2;
+}
+
+.div-sigla {
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+.label-font-login {
+    font-family: "Droid Sans";
+    
+}
+
+.btn-login {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.link-login {
+    font-size: 12px;
+}
+
+.sigla-login {
+    font-size: 400%;
+    font-family: fantasy;
+    margin: 0px;
+    margin-top: 20px;
+    color: cadetblue;
+}
+
+.font-style-logo-login{
+    font-family: 'Droid Sans';
+    color: cadetblue;
+    border-style: dashed;
+    vertical-align: -50%;
+    margin: 0px;
+    margin-top: 0px;
+    text-align: center;
+    
+}

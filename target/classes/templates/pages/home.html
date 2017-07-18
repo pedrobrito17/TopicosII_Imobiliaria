@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">
+	
+	
+	<body>
+	
+		<main layout:fragment="conteudo-principal">
+
+
+
+<div class="container div-liberte">
+             <div classs="row">
+                
+                <div class="col-md-12">
+                    <img class="img img-responsive" th:src="@{/layout/img/cabecalho_office-Recuperado-1170x350.jpg}">
+                </div>
+             </div>
+        </div>
+        
+        <!-- Body -->
+        <div class="container div-liberte">         
+               
+            <div class="row form-color">
+                
+                <div class="">
+                    <h3>Encontre seu imóvel</h3>
+
+                    <form class="form-group">
+
+                        <div class="row tam-linha">
+                            <div class="col-md-4">
+                                <select id="hora-entrega" name="cars" class="form-control form-custom">
+                                <option value="comprar">Comprar</option>
+                                <option value="alugar">Alugar</option>
+                            </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select id="hora-entrega" name="cars" class="form-control form-custom">
+                                    <option value="0">Tipo de imóvel</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="apartamento">Apartamento</option>
+                                    <option value="flat">Flat</option>
+                                    <option value="chacara">Chácara</option>
+                                    <option value="fazenda">Fazenda</option>
+                                    <option value="sala_comercial">Sala comercial</option>                                 
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select id="hora-entrega" name="cars" class="form-control form-custom">
+                                    <option value="0">Finalidade</option>
+                                    <option value="residencial">Residencial</option>
+                                    <option value="comercial">Comercial</option>
+                                    <option value="rural">Rural</option>                                
+                                </select>
+                            </div>
+                        </div><br/>
+                        <div class="row tam-linha">
+                            <div class="col-md-6">
+                                <select id="hora-entrega" name="cars" class="form-control form-custom">
+                                    <option value="0">Cidade</option>
+                                    <option value="casa">São Luís</option>
+                                    <option value="paço do lumiar">Paço do Lumiar</option>
+                                    <option value="sao jose de ribamar">São José de Ribamar</option>  
+                                    <option value="raposa">Raposa</option>     
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" placeholder="Bairro"/>
+                            </div>
+                        </div><br/>
+                        <div class="row tam-linha">
+                            <div class="col-md-6">
+                                <select id="hora-entrega" name="cars" class="form-control form-custom">
+                                    <option value="0">Faixa de valores</option>
+                                    <option value="casa">São Luís</option>
+                                    <option value="paço do lumiar">Paço do Lumiar</option>
+                                    <option value="sao jose de ribamar">São José de Ribamar</option>  
+                                    <option value="raposa">Raposa</option>     
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select id="hora-entrega" name="cars" class="form-control form-custom">
+                                    <option value="0">Vagas</option>
+                                    <option value="casa">São Luís</option>
+                                    <option value="paço do lumiar">Paço do Lumiar</option>
+                                    <option value="sao jose de ribamar">São José de Ribamar</option>  
+                                    <option value="raposa">Raposa</option>     
+                                </select>
+                            </div>
+                        </div><br/>
+                        
+                        <div class="row tam-linha">
+                            <div class="col-md-12">
+                                <button class="btn right" type="submit"><span class="glyphicon glyphicon-search"></span> BUSCAR IMÓVEL</button>
+                            </div>  
+                        </div>
+
+                    </form>
+                </div>
+                
+            </div>
+
+
+        </div>
+        
+		</main>
+        
+        
+	</body>
+
+</html>

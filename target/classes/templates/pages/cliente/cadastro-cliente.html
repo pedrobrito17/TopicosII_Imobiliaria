@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+	
+	<body>
+	  <main layout:fragment="conteudo-principal"></br>
+        <div class="container">
+
+            <form th:method="post" th:action="@{/kyzimobiliaria/cadastrar}" th:object="${cliente}">
+            	
+            	<!-- MENSAGENS -->
+            	<div th:replace="default/mensagens-de-alerta :: mensagem-sucesso"></div>
+				<div th:replace="default/mensagens-de-alerta :: mensagem-erro"></div>
+				
+				<div class="panel panel-default">
+			      <div class="panel-heading">
+			        <div class="clearfix">
+			          <h1 class="panel-title pull-left" style="padding-top: 6px;">Cadastro do cliente</h1>
+			        </div>
+			      </div>
+
+      			 <div class="panel-body">
+				            
+				<div class="row row-input">
+                    <div class="col-md-4 col-md-offset-1">
+                        <label>Nome completo</label></br>
+                        <input class="form-control" type="text" th:field="*{nome_cliente}"/>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Data de nascimento</label></br>
+                        <input class="form-control" type="text" th:field="*{dt_nascimento}"/>
+                    </div>
+                </div></br>
+                <div class="row row-input">
+                    <div class="col-md-6 col-md-offset-1">
+                        <label>E-mail</label></br>
+                        <input class="form-control" type="email" th:field="*{email}"/>
+                    </div>
+                </div></br>
+                <div class="row row-input">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>RG</label></br>
+                        <input class="form-control" type="text" th:field="*{rg}"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label>CPF</label></br>
+                        <input class="form-control" type="text" th:field="*{cpf}"/>
+                    </div>
+                </div></br>
+                <div class="row row-input">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Telefone 01</label></br>
+                        <input class="form-control" type="text" th:field="*{telefone_1}"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Telefone 02</label></br>
+                        <input class="form-control" type="text" th:field="*{telefone_2}"/>
+                    </div>
+                </div></br>
+                <div class="row row-input">
+                    <div class="col-md-4 col-md-offset-1">
+                        <label>Endereço</label></br>
+                        <input class="form-control" type="text" th:field="*{endereco_completo}"/>
+                    </div>
+                    <div class="col-md-2">
+                        <label>CEP</label></br>
+                        <input class="form-control" type="text" th:field="*{cep}"/>
+                    </div>
+                </div></br>
+                <div class="row row-input">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Senha</label></br>
+                        <input class="form-control" type="password" th:field="*{senha}"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Confirmar senha</label></br>
+                        <input class="form-control" type="password" th:field="*{conf_senha}"/>
+                    </div>
+                </div></br>
+                <div class="row row-input">
+                    <div class="col-md-3 col-md-offset-1">
+                        <button type="submit" class="btn btn-primary" style="width:50%; margin:0px;">Criar conta</button>
+                    </div>
+                </div>
+                
+                </div>
+                </div>
+            
+            </form>
+        </div>
+        </br>
+        </br>
+		</main>
+	</body>
+</html>

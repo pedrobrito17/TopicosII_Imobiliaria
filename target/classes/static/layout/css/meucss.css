@@ -1,0 +1,384 @@
+.header{
+    background-color: #2ecc71;
+    min-height: 100px;
+}
+
+.font-style-logo{
+    font-family: 'Droid Sans';
+    color: cadetblue;
+    border-style: dashed;
+    vertical-align: -50%;
+    margin: 0px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.inline, .font-style-logo,
+.logo{
+    display: inline-block;
+}
+
+.capa{
+    width: 100%;
+    max-height: 450px;
+}
+
+.body{
+    background-color: #ecf0f1;
+}
+
+.logo{
+    position: relative;
+    left: 100px;
+    top: 0px;
+    max-width: 200px;
+    height: 130px;
+    padding: 15px;
+    margin-left: 5%;
+    background: white;
+}
+
+.menu{
+    color: white;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+.div-icon-menu{
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    right: 10%;
+    top: 30%;
+}
+
+.caixa_aluguel {
+    width: 30%;
+    height: auto;
+    background-color: #F5AB35;
+    color: rgba(0,0,0,.7);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 3px 0 rgba(255,255,255,.3), inset 0 -3px 6px 0 rgba(0,0,0,.2), 0 3px 2px 0 rgba(0,0,0,.2);
+    box-sizing: border-box;
+    position: absolute;
+    left: 15%;
+    top: 8%;
+}
+
+.titulo_pesquisa {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    padding-bottom: 15px;
+    text-align: center;
+    color: rgba(0,0,0,.7);
+}
+
+.div-capa {
+    position: relative;
+}
+
+.div-liberte {
+    margin-top: 5%;
+}
+
+.sytle-liberte {
+    text-align: center;
+    font-size: 4em;
+    color: #333;
+    font-family: 'Cabin', monospace;
+    margin-bottom: 4%;
+}
+
+p{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #333;
+    font-size: 1.2em;
+}
+
+
+
+.style-footer-email {
+    background-color: #333;
+    height: 100%;
+    min-height: 100%;
+    padding: 1em;
+}
+
+.form-custom {
+    display: inline-block;
+    width: 100%;
+}
+
+@font-face{
+    
+}
+.div-menu {
+    position: relative;
+    top: 0px;
+    left: 15%;
+}
+
+.li-menu {
+    background-color: #2c3e50;
+    color:white;''
+}
+
+.div-login {
+    color: white;
+    position: absolute;
+    top: 30%;
+    right: 25%;
+}
+
+.header-color-custom {
+    color:white;
+}
+
+.header-color-custom:hover{
+    /*color: #3e8f3e;*/
+    cursor: pointer;
+    color: #419641;
+}
+
+.input-login {
+    border-bottom-right-radius: 0px;
+}
+
+.input-passw {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.popover {
+    max-width: 300px;   
+}
+
+.border-login {
+        border-bottom-left-radius: 0px;
+}
+
+.border-pass {
+    border-top-left-radius: 0px;
+}
+
+.style-footer {
+    height: 15em;
+}
+
+.style-copyright {
+    height: 5em;
+    margin-top: 50px;
+}
+
+.color-footer{
+    background-color: beige;
+}
+
+.div-center {
+    height: 100%;
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.h3-email {
+    height: auto;
+    margin: 0px;
+    color:white;
+    font-size: 2em;
+}
+
+.form-email {
+    min-width: 250px;
+}
+
+.div-copyright {
+    font-size: 12px;
+    text-align: center;
+    color: #7C7C7C;
+    border-top: 1px solid rgba(0,0,0,.15);
+}
+
+.div-home {
+    padding-top: 1em;
+    font-family: 'Droid Sans', monospace;
+    font-size: 1em;
+    font-family: 'Roboto', 'Open Sans', monospace;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.footer-info {
+    padding-top: 46px;
+}
+
+.footer-info li{
+    color: #555753;
+    padding: 0px;
+    padding-bottom: 0.3em;
+    margin-left: 0px;
+    font-size: 0.9em;
+}
+
+.footer-info p{
+    color: #7C7C7C;
+}
+
+.footer-info p{
+    padding-top: 0.8em;
+    padding-bottom: 0.6em;
+}
+
+ul {
+    
+}
+
+.list {
+    list-style: none;
+    padding: 0px;
+}
+
+.footer-info a:hover{
+    text-decoration: underline;
+    color: #eee;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.footer-input {
+    width: 60%;
+    max-width: 60%;
+}
+
+
+
+.div-body-img {
+    color: #524c61;
+    background-color: #f2f2f2;
+    padding: 2em;
+}
+
+.div-body-img img {
+    border-bottom: 3px solid #419641;
+}
+
+.icon-home-body {
+    color: #419641;
+}
+
+.thumbnail-custom {
+    padding: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.img-frota {
+    max-height: 205px;
+    max-width: 113px;
+}
+
+.body-topo {
+    margin-top: 3%;
+}
+
+.input-vizinho {
+    width: 49%;
+}
+
+.left {
+    float: left;
+}
+
+
+
+.right {
+    float: right;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+.margin-botton {
+    margin-bottom: 10px;
+}
+
+.tam-linha {
+    width: 100%;
+}
+
+.sigla {
+    font-size: 400%;
+    font-family: fantasy;
+    margin: 0px;
+    text-align: center;
+}
+
+.sigla-footer {
+    font-size: 400%;
+    font-family: fantasy;
+    margin: 0px;
+}
+
+.font-style-tel {
+    color: whitesmoke;
+    font-size: 120%;
+}
+
+.top-tel {
+    bottom: 0px;
+}
+
+.color-list {
+    color: black;
+}
+
+.form-color {
+    background-color: #ecf0f1;
+    padding: 12px;
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.topo {
+    top: 0px;
+    position: relative;
+}
+
+#menu ul {
+    padding:0px;
+    margin:0px;
+    background-color:#2ecc71;
+    list-style:none;
+}
+
+#menu ul li { display: inline; }
+
+#menu ul li a {
+    padding: 2px 10px;
+    display: inline-block;
+
+    /* visual do link */
+    background-color:white;
+    color: #333;
+    text-decoration: none;
+    border-bottom:3px solid #EDEDED;
+}
+
+#menu ul li a:hover {
+    background-color:white;
+    color: #6D6D6D;
+    border-bottom:3px solid #6D6D6D;
+}

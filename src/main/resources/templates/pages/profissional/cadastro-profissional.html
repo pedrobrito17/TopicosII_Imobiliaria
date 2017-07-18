@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+
+	
+	<body>
+		<main layout:fragment="conteudo-principal"></br>
+        <div class="container">
+        
+        	<form class="form-horizontal" th:action="@{/kyzimobiliaria/cadastrarprofissional}" 
+        	  method="post" th:object="${profissional}">
+
+		     <div th:include="default/mensagens-de-alerta :: mensagem-sucesso"></div>
+		     <div th:include="default/mensagens-de-alerta :: mensagem-erro"></div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="clearfix">
+          <h1 class="panel-title pull-left" style="padding-top: 6px;">Cadastro do profissional</h1>
+        </div>
+      </div>
+
+      <div class="panel-body">
+
+        <!--  NOME -->
+        <div class="form-group">
+          <label for="nome" class="col-sm-2 control-label">Nome</label>
+          <div class="col-sm-6">
+            <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+          </div>
+        </div>
+        
+        <!--  EMAIL -->
+        <div class="form-group">
+          <label for="email" class="col-sm-2 control-label">E-mail</label>
+          <div class="col-sm-6">
+            <input id="email" type="text" class="form-control" th:field="*{email}"/>
+          </div>
+        </div>
+        
+        <!-- TELEFONE01 -->
+        <div class="form-group">
+          <label for="telefon01" class="col-sm-2 control-label">Telefone 01</label>
+          <div class="col-sm-6">
+            <input id="telefone01" type="text" class="form-control" th:field="*{telefone01}"/>
+          </div>
+        </div>
+        
+        <!-- TELEFONE02 -->
+        <div class="form-group">
+           <label for="telefone02" class="col-sm-2 control-label">Telefone02</label>
+          <div class="col-sm-6">
+            <input id="telefone02" type="text" class="form-control" th:field="*{telefone02}"/>
+          </div>
+        </div>
+        
+        
+        <!-- CRECI -->
+        <div class="form-group">
+          <label for="creci" class="col-sm-2 control-label">CRECI</label>
+          <div class="col-sm-6">
+            <input id="creci" type="text" class="form-control" th:field="*{creci}"/>
+          </div>
+        </div>
+        
+        <!-- SENHA -->
+        <div class="form-group">
+          <label for="senha" class="col-sm-2 control-label">Senha</label>
+          <div class="col-sm-6">
+            <input id="senha" type="password" class="form-control" th:field="*{senha}"/>
+          </div>
+        </div>   
+                
+        <!-- BOTAO CADASTRAR -->
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+         	
+        </div>
+
+		</main>
+	</body>
+</html>
