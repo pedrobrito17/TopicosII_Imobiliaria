@@ -9,5 +9,7 @@ public interface Clientes extends JpaRepository<Cliente, String>{
 	Cliente findByEmailAndSenha(String email, String senha);
 	
 	Cliente findById(Long id);
+
+	Cliente findByCpf(String cpfProprietario);
 	
 }

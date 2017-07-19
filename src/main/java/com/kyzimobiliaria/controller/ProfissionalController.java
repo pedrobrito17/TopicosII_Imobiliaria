@@ -1,10 +1,13 @@
 package com.kyzimobiliaria.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,35 +26,6 @@ public class ProfissionalController {
 	
 	@Autowired
 	private ProfissionalService profissionalService;
-	
-	@RequestMapping("/profissional")
-	public ModelAndView getPageProfissional(){
-		ModelAndView mv = new ModelAndView("pages/profissional/login-profissional");
-		return mv;
-	}
-	
-	@RequestMapping("/loginprofissional")
-	public ModelAndView loginProfissional(Profissional profissional){
-		ModelAndView mv = new ModelAndView("pages/profissional/login-profissional");
-		return mv;
-	}
-	
-	@PostMapping("/entrarprofissional")
-	public ModelAndView entrarProfissional(Profissional profissional, RedirectAttributes attributes){
-		String email = profissional.getEmail();
-		String senha = profissional.getSenha();
-		
-		Profissional prof = profissionalService.getProfissional(email, senha);
-		
-		if(prof != null){
-			ModelAndView mv = new ModelAndView("pages/profissional/painel-profissional");
-			mv.addObject("profissional", prof);
-			return mv;
-		}
-		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/loginprofissional");
-		attributes.addFlashAttribute("mensagem_erro", "Senha ou e-mail não confere.");
-		return mv;			
-	}
 	
 	@RequestMapping("/cadastroprofissional")
 	public ModelAndView cadastroProfissional(){
@@ -75,14 +49,18 @@ public class ProfissionalController {
 		return mv;
 	}
 	
-	@RequestMapping("/painel-profissional")
-	public ModelAndView getPagePainelProfissional(Profissional profissional){
-		ModelAndView mv = new ModelAndView("pages/profissional/painel-profissional");
-		mv.addObject(profissional);
+	@RequestMapping("/buscar/profissional")
+	public ModelAndView getPageBuscarTodosProfissionais(){
+		ModelAndView mv = new ModelAndView("pages/profissional/busca-profissional");
 		return mv;
 	}
 	
-	@PostMapping("/salvarprofissional")
+	@ModelAttribute("todosProfissionais")
+	public List<Profissional> getTodosProfissionais(){
+		List<Profissional> todosProfissionais = profissionalService.getTodosProfissionais();
+		return todosProfissionais;
+	}
+/*	@PostMapping("/salvarprofissional")
 	public ModelAndView postsalvar(@Valid Profissional profissional, BindingResult result, 
 			RedirectAttributes attributes){
 		if(result.hasErrors()){
@@ -93,13 +71,13 @@ public class ProfissionalController {
 		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/painel-profissional");
 		mv.addObject(profissional);
 		return mv;
-	}
+	}*/
 	
-	@RequestMapping(value="/deletarprofissional/{id}", method = RequestMethod.GET) 
+/*	@RequestMapping(value="/deletarprofissional/{id}", method = RequestMethod.GET) 
 	public ModelAndView deletarCliente(@PathVariable("id") int id){
 		Profissional profissional = profissionalService.getProfissionalId(id);
 		profissionalService.deletarProfissional(profissional);
 		return new ModelAndView("redirect:/kyzimobiliaria/loginprofissional");
-	}
+	}*/
 	
 }

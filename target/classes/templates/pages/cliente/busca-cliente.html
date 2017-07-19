@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<body>
+	 	<main layout:fragment="conteudo-principal"></br>
+	 		<div class="container">
+		 		<table class="table table-striped">
+		 			<thead>
+		 				<th>#</th>
+		 				<th>Nome Completo</th>
+		 				<th>CPF</th>
+		 				<th>Ações</th>
+		 			</thead>
+		 			<tbody>
+		 				<tr th:each="cliente,conta : ${todosClientes}">
+		 					<td th:text="${conta.count}"></td>
+		 					<td th:text="${cliente.nome_cliente}"></td>
+		 					<td th:text="${cliente.cpf}"></td>
+		 					<td> Imagens </td>
+		 				</tr>	 			
+		 			</tbody>
+		 		</table>
+		 	</div> <!-- fim container -->        
+		</main>
+	</body>
+</html>

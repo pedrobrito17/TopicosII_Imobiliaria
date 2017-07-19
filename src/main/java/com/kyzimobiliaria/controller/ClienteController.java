@@ -1,11 +1,14 @@
 package com.kyzimobiliaria.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,28 +23,12 @@ import com.kyzimobiliaria.service.ClienteService;
 @RequestMapping("/kyzimobiliaria")
 public class ClienteController {
 	
-	private static Logger log = Logger.getLogger(ClienteController.class);
-	
 	@Autowired
 	private ClienteService clienteService;
-	
-	@RequestMapping("/clientes")
-	public ModelAndView getPageCliente(){
-		ModelAndView mv = new ModelAndView("pages/cliente/login-clientes");
-		mv.addObject("cliente", new Cliente());
-		return mv;
-	}
 	
 	@RequestMapping("/cadastro-cliente")
 	public ModelAndView getPageCadastroCliente(Cliente cliente){
 		ModelAndView mv = new ModelAndView("pages/cliente/cadastro-cliente");
-		return mv;
-	}
-	
-	@RequestMapping("/painel-cliente")
-	public ModelAndView getPagePainelCliente(Cliente cliente){
-		ModelAndView mv = new ModelAndView("pages/cliente/painel-cliente");
-		mv.addObject(cliente);
 		return mv;
 	}
 	
@@ -58,7 +45,20 @@ public class ClienteController {
 		return new ModelAndView("redirect:/kyzimobiliaria/cadastro-cliente");
 	}
 	
-	@PostMapping("/salvar")
+	@RequestMapping("/buscar/clientes")
+	public ModelAndView getpageBuscaClientes(){
+		ModelAndView mv = new ModelAndView("/pages/cliente/busca-cliente");
+		return mv;
+	}
+	
+	@ModelAttribute("todosClientes")
+	public List<Cliente> getTodosClientes(){
+		List<Cliente> todosClientes = clienteService.getTodosClientes();
+		return todosClientes;
+	}
+	
+	
+/*	@PostMapping("/salvar")
 	public ModelAndView postsalvar(@Valid Cliente cliente, BindingResult result, 
 			RedirectAttributes attributes){
 		if(result.hasErrors()){
@@ -69,34 +69,14 @@ public class ClienteController {
 		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/painel-cliente");
 		mv.addObject(cliente);
 		return mv;
-	}
+	}*/
 	
-
-	@PostMapping("/entrar")
-	public ModelAndView entrar(Cliente cliente, RedirectAttributes attributes){
-		String email = cliente.getEmail();
-		String senha = cliente.getSenha();
-		
-		Cliente usuario = clienteService.getCliente(email, senha);
-		if(usuario != null){
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("pages/cliente/painel-cliente");
-			mv.addObject(usuario);
-			return mv;
-		}else{
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("redirect:/kyzimobiliaria/clientes");
-			attributes.addFlashAttribute("mensagem_erro", "E-mail ou senha não confere.");
-			return mv;
-		}
-	}
-	
-	@RequestMapping(value="/deletarcliente/{id}", method = RequestMethod.GET) 
+	/*@RequestMapping(value="/deletarcliente/{id}", method = RequestMethod.GET) 
 	public ModelAndView deletarCliente(@PathVariable("id") Long id){
 		Cliente cliente = clienteService.getClienteId(id);
 		clienteService.deletarCliente(cliente);
 		return new ModelAndView("redirect:/kyzimobiliaria/clientes");
-	}
+	}*/
 	
 	
 }

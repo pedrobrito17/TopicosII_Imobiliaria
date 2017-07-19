@@ -1,127 +1,103 @@
 <!DOCTYPE html>
-<html lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Imobiliária de São Luís">
+    <meta name="author" content="Pedro Brito">
+
+    <title>KYM Imobiliária</title>
+
+    <!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}"/>
+
+	<!-- Meu css -->
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/dropdown-menu.css}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/meucss.css}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/customcss.css}"/>
 	
-	<head>
-		<title>KYZ Imobiliária</title>
-        
-        <meta charset="utf-8">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<! Garante a renderização para diferentes tamanho de tela -->
-		<meta name="viewport" content="width=device-width , initial-scale=1"/>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}" media="screen"/>
+</head>
 
-		<!-- Meu css -->
-		<link type="text/css" rel="stylesheet" th:href="@{/layout/css/meucss.css}"/>
-        
-        <!-- Adiciona as fontes ao projeto -->
-        <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet"/> 
-        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"/> 
-        
-        <!-- Adiciona icones ao projeto -->
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
-	</head>
-	<body>
-                             
-        <div class="container-fluid">
-            <!-- Cabeçalho -->
-            <div class="row header clearfix posicao-absoluta"> 
-                <div class="col-md-4">
-                    <div class="logo inline">
-                        <a th:href="@{/kyzimobiliaria/home}">
-                            <h1 class="sigla">KYZ</h1>
-                            <h3 class="hidden-xs font-style-logo">IMOBILIÁRIA</h3>
-                            <h5 class="visible-xs font-style-logo">IMOBILIÁRIA</h5>                      
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                   <nav id="menu">
-                        <ul>
-                            <li><a th:href="@{/kyzimobiliaria/home}">Home</a></li>
-                            <li><a th:href="@{/kyzimobiliaria/clientes}">Cliente</a></li>
-                            <li><a th:href="@{/kyzimobiliaria/loginprofissional}">Profissional</a></li>
-                            <li><a th:href="@{/kyzimobiliaria/imoveis}">Imóvel</a></li>
-                            <li><a href="#">Financiamento</a></li>
-                            <li><a href="#">Contato</a></li>
-                        </ul>
-                    </nav>   
-                </div>
-                <div class="col-md-2">
-                </div>
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" th:href="@{/kyzimobiliaria/home}">KYZ Imobiliária</a>
             </div>
-    
 
+            <!-- navbar -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a th:href="@{/kyzimobiliaria/cadastro-cliente}">Cliente</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a th:href="@{/kyzimobiliaria/cadastroprofissional}">Profissional</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a th:href="@{/kyzimobiliaria/cadastroimovel}">Imóvel</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Serviços</a>
+                    </li>
+                    <li class="page-scroll">
+                        <div class="dropdown">
+                          <button class="dropbtn">BUSCAR</button>
+                          <div class="dropdown-content">
+                            <a th:href="@{/kyzimobiliaria/buscar/clientes}">Cliente</a>
+                            <a th:href="@{/kyzimobiliaria/buscar/profissional}">Profissional</a>
+                            <a th:href="@{/kyzimobiliaria/imoveis}">Imóvel</a>
+                          </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- navbar -->
         </div>
-        
-        <main layout:fragment="conteudo-principal">
-        
-        </main>
-        
-        <br/>
-        <br/>
+        <!-- /.container-fluid -->
+    </nav>
 
-        <!-- footer -->
-        <div class="color-footer footer-info">
+    <!-- Main -->
+    <section class="main" layout:fragment="conteudo-principal">
+        <div class="container">
+           
+        </div>
+    </section>
+
+    
+    <!-- Footer -->
+    <footer class="text-center">        
+        <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
-                    	<a th:href="@{/kyzimobiliaria/home}">
-	                        <h4 class="sigla-footer">KYZ</h4>
-	                        <h5 class="font-style-logo">IMOBILIÁRIA</h5>        
-	                    </a>    
-                        <p>Receba semanalmente informações de imóveis:</p>
-                        <form>
-                            <input type="email" class="form-control footer-input inline" placeholder="Digite seu e-mail" id="seu-email">
-                            <input type="submit" class="btn inline" value="Cadastrar">
-                        </form>
-                    </div>
-                    <div class="col-md-8 inline">
-                        <div class="col-md-4">
-                            <h4>Institucional</h4>
-                            <ul class="list color-list">
-                                <a class="color-list" href="#"><li class="color-list">Missão, Visão e Valores</li></a>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Imóveis</h4>
-                            <ul class="list">
-                                <a href="#"><li>Frente ao mar</li></a>
-                                <a href="#"><li>Vista para o mar</li></a>
-                                <a href="#"><li>Locação por temporada</li></a>
-                                <a href="#"><li>Encontre seu imóvel</li></a>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Serviços</h4>
-                            <ul class="list">
-                                <a href="#"><li>Assessoria Imobiliária</li></a>
-                                <a href="#"><li>Financiamento</li></a>
-                                <a href="#"><li>Propostas e Cadastro</li></a>
-                            </ul>
-                        </div>
+                    <div class="col-lg-12">
+                        Copyright &copy; KYZ Imobiliária 2017
                     </div>
                 </div>
-                <div class="row style-copyright ">
-                    <div class="col-md-10 col-md-offset-1 div-copyright">
-                        <h6 class="text-right">Copyright &copy; 2017. Todos os direitos reservados.</h6>                
-                    </div>            
-                </div>
+            </div>
+        </div>
+    </footer>   
+    
+    <script th:src="@{/layout/js/jquery-3.1.1.min.js}"></script> <!--Adiciona o JQuery -->
+    <script th:src="@{/layout/js/bootstrap.min.js}"></script> <!-- Adiciona o javascript Bootstrap -->
+    <script th:src="@{/layout/js/meujs.js}"></script> <!-- Adiciona meu JS -->
 
-            </div> <!-- /.container -->    
-        
-        </div> <!-- /.footer -->
-		<script th:src="@{/layout/js/jquery-3.1.1.min.js}"></script> <!--Adiciona o JQuery -->
-        <script th:src="@{/layout/js/bootstrap.min.js}"></script> <!-- Adiciona o javascript Bootstrap -->
-        <script th:src="@{/layout/js/meujs.js}"></script> <!-- Adiciona meu JS -->
-	</body>
+</body>
+
 </html>

@@ -58,7 +58,7 @@ public class Cliente {
 	@NotBlank(message="{conf.senha.vazia}")
 	private String conf_senha;
 	
-	@OneToMany(mappedBy="prof")
+	@OneToMany
 	private List<Imovel> imoveis;
 
 	public String getCpf() {

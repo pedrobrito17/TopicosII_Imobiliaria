@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<body>
+	 	<main layout:fragment="conteudo-principal"></br>
+	 		<div class="container">
+		 		<table class="table table-striped">
+		 			<thead>
+		 				<th>#</th>
+		 				<th>Nome Completo</th>
+		 				<th>E-mail</th>
+		 				<th>CRECI</th>
+		 				<th>Telefone 01</th>
+		 				<th>Telefone 02</th>
+		 				<th>Valor hora/trabalho</th>
+		 				<th>Ações</th>
+		 			</thead>
+		 			<tbody>
+		 				<tr th:each="prof,conta : ${todosProfissionais}">
+		 					<td th:text="${conta.count}"></td>
+		 					<td th:text="${prof.nome}"></td>
+		 					<td th:text="${prof.email}"></td>
+		 					<td th:text="${prof.creci}"></td>
+		 					<td th:text="${prof.telefone01}"></td>
+		 					<td th:text="${prof.telefone02}"></td>
+		 					<td th:text="${prof.valor_hora}"></td>
+		 					<td> Imagens </td>
+		 				</tr>	 			
+		 			</tbody>
+		 		</table>
+		 	</div> <!-- fim container -->        
+		</main>
+	</body>
+</html>

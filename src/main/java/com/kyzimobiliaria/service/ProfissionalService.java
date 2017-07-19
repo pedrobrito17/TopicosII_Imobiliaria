@@ -1,5 +1,7 @@
 package com.kyzimobiliaria.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,10 @@ public class ProfissionalService {
 
 	public void deletarProfissional(Profissional profissional) {
 		profissionais.delete(profissional);		
+	}
+
+	public List<Profissional> getTodosProfissionais() {
+		return profissionais.findAll();
 	}
 
 }

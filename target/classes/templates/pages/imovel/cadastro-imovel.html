@@ -11,11 +11,8 @@
 		<main layout:fragment="conteudo-principal"></br>
         
         <div class="container">
-        
-        	<!-- MENU DO PROFISSIONAL -->
-           <!--  <div th:replace="default/menu-painel :: menu-profissional"></div> -->
        
-     	<form class="form-horizontal" th:action="@{/kyzimobiliaria/cadastrarimovel/{id}(id=${profissional.id_profissional})}" 
+     	<form class="form-horizontal" th:action="@{/kyzimobiliaria/cadastrarimovel}" 
         	  method="post" th:object="${imovel}">
         	  
         	<!-- MENSAGENS -->
@@ -30,11 +27,14 @@
 		      </div>
 		
 		      <div class="panel-body">
-		      	
-		      	<!--  PROFISSIONAL -->
-		        <div class="hidden">
-		        	<input th:text="${profissional.id_profissional}" th:field="*{prof}"/>
-				</div>
+		      
+		      <!--  CPF DO PROPRIETÁRIO -->
+		        <div class="form-group">
+		          <label for="cpf" class="col-sm-2 control-label">CPF do proprietário</label>
+		          <div class="col-sm-6">
+		            <input id="cpf" type="text" class="form-control name="cpfProprietario"/>
+		          </div>
+		        </div>
 				
 		        <!--  ENDEREÇO -->
 		        <div class="form-group">
@@ -65,6 +65,16 @@
 		          <label for="pontoref" class="col-sm-2 control-label">Ponto de referência</label>
 		          <div class="col-sm-6">
 		            <input id="pontoref" type="text" class="form-control" th:field="*{pontodereferencia}"/>
+		          </div>
+		        </div>
+		        
+		        <!--  TIPO DO IMOVEIS -->
+		        <div class="form-group">
+		          <label for="tipo_imovel" class="col-sm-2 control-label">Tipo do Imóvel</label>
+		          <div class="col-sm-6">
+		            <select th:each="tipo ${todosTipoImoveis}" th:field="*{tipoimovel}">
+		            	<option th:text="${tipo.descricao}" th:value="${tipo.id_tipoimovel}"></option>
+		            </select>
 		          </div>
 		        </div>
 		        
