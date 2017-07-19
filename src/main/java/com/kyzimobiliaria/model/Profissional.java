@@ -1,13 +1,10 @@
 package com.kyzimobiliaria.model;
 
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -21,9 +18,6 @@ public class Profissional {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_profissional;
-	
-	@OneToMany(mappedBy="prof")
-	private List<Imovel> imoveis;
 	
 	@NotEmpty(message="{nome.vazio}")
 	private String nome;
@@ -107,14 +101,6 @@ public class Profissional {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public List<Imovel> getImoveis() {
-		return imoveis;
-	}
-
-	public void setImoveis(List<Imovel> imoveis) {
-		this.imoveis = imoveis;
 	}
 	
 	

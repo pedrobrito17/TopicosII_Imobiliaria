@@ -1,11 +1,13 @@
 package com.kyzimobiliaria.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -55,6 +57,9 @@ public class Cliente {
 	
 	@NotBlank(message="{conf.senha.vazia}")
 	private String conf_senha;
+	
+	@OneToMany(mappedBy="prof")
+	private List<Imovel> imoveis;
 
 	public String getCpf() {
 		return cpf;
@@ -151,6 +156,15 @@ public class Cliente {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public List<Imovel> getImoveis() {
+		return imoveis;
+	}
+
+	public void setImoveis(List<Imovel> imoveis) {
+		this.imoveis = imoveis;
+	}
+	
 	
 	
 	

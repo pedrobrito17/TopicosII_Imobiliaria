@@ -27,8 +27,8 @@ public class ImovelController {
 	@Autowired
 	private ProfissionalService profissionalService;
 	
-	@PostMapping("/cadastrarimovel/{id}")
-	public ModelAndView cadastrarImovel(@PathVariable("id") int id, 
+	@PostMapping("/cadastrarimovel/{cpf}")
+	public ModelAndView cadastrarImovel(@PathVariable("cpf") String cpf, 
 			@Valid Imovel imovel, BindingResult result, 
 			RedirectAttributes attributes){
 		if(result.hasErrors()){
@@ -36,8 +36,9 @@ public class ImovelController {
 			mv.addObject("imovel", imovel);
 			return mv;
 		}
-		Profissional prof = profissionalService.getProfissionalId(id);
-		imovel.setProf(prof);
+		//Profissional prof = profissionalService.getProfissionalId(id);
+		//imovel.setProf(prof);
+		
 		imovelService.salvarImovel(imovel);
 		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/loginprofissional");
 		//mv.addObject("profissional", prof);

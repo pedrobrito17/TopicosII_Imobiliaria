@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -58,9 +59,12 @@ public class Imovel {
 	
 	private String obs;
 	
+	@OneToOne
+	private TipoImovel tipoimovel;
+	
 	@ManyToOne
-	@JoinColumn(name="id_profissional", referencedColumnName="id_profissional")
-	public Profissional prof;
+	@JoinColumn(name="id_cliente", referencedColumnName="id")
+	public Cliente cliente;
 	
 	public int getId_imovel() {
 		return id_imovel;
@@ -140,12 +144,19 @@ public class Imovel {
 	public void setObs(String obs) {
 		this.obs = obs;
 	}
-	public Profissional getProf() {
-		return prof;
+	public TipoImovel getTipoimovel() {
+		return tipoimovel;
 	}
-	public void setProf(Profissional prof) {
-		this.prof = prof;
+	public void setTipoimovel(TipoImovel tipoimovel) {
+		this.tipoimovel = tipoimovel;
 	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	
 	
 	
