@@ -53,6 +53,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- bootstrap-datepicker -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>bootstrap-datepicker</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+
+		<!-- jquery-maskmoney -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>jquery-maskmoney</artifactId>
+			<version>3.0.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

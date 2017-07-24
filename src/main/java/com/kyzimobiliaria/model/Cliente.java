@@ -52,14 +52,10 @@ public class Cliente {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dt_nascimento;
 	
-	@NotBlank(message="{senha.vazia}")
-	private String senha;
-	
-	@NotBlank(message="{conf.senha.vazia}")
-	private String conf_senha;
-	
 	@OneToMany
 	private List<Imovel> imoveis;
+	
+	private boolean ativo = true;
 
 	public String getCpf() {
 		return cpf;
@@ -133,22 +129,6 @@ public class Cliente {
 		this.dt_nascimento = dt_nascimento;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getConf_senha() {
-		return conf_senha;
-	}
-
-	public void setConf_senha(String conf_senha) {
-		this.conf_senha = conf_senha;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -164,6 +144,16 @@ public class Cliente {
 	public void setImoveis(List<Imovel> imoveis) {
 		this.imoveis = imoveis;
 	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
+	
 	
 	
 	

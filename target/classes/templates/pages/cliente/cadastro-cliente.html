@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-md-2">
                         <label>Data de nascimento</label></br>
-                        <input class="form-control" type="text" th:field="*{dt_nascimento}"/>
+                        <input id="dtNascimento" class="form-control datepicker" type="text" th:field="*{dt_nascimento}"/>
                     </div>
                 </div></br>
                 <div class="row row-input">
@@ -73,18 +73,8 @@
                     </div>
                 </div></br>
                 <div class="row row-input">
-                    <div class="col-md-3 col-md-offset-1">
-                        <label>Senha</label></br>
-                        <input class="form-control" type="password" th:field="*{senha}"/>
-                    </div>
-                    <div class="col-md-3">
-                        <label>Confirmar senha</label></br>
-                        <input class="form-control" type="password" th:field="*{conf_senha}"/>
-                    </div>
-                </div></br>
-                <div class="row row-input">
-                    <div class="col-md-3 col-md-offset-1">
-                        <button type="submit" class="btn btn-primary" style="width:50%; margin:0px;">Criar conta</button>
+                    <div class="col-md-12 col-md-offset-1">
+                        <button type="submit" class="btn btn-primary" style="width:50%; margin:0px;">Cadastrar cliente</button>
                     </div>
                 </div>
                 
@@ -95,6 +85,12 @@
         </div>
         </br>
         </br>
+        
+        <div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+        <div th:replace="default/fragment-java-script :: datepicker"></div>
+        
+        
 		</main>
+		
 	</body>
 </html>

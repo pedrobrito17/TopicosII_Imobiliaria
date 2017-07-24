@@ -7,32 +7,58 @@
 	
 	<body>
 	 	<main layout:fragment="conteudo-principal"></br>
+	 		
 	 		<div class="container">
+	 			<h3>Imóveis cadastrados</h3></br>
+	 			<!-- MENSAGENS -->
+	        	<div th:include="default/mensagens-de-alerta :: mensagem-sucesso"></div>
+	        	
 		 		<table class="table table-striped">
 		 			<thead>
 		 				<th>#</th>
-		 				<th>Nome Completo</th>
-		 				<th>E-mail</th>
-		 				<th>CRECI</th>
-		 				<th>Telefone 01</th>
-		 				<th>Telefone 02</th>
-		 				<th>Valor hora/trabalho</th>
+		 				<th>Proprietário</th>
+		 				<th>Tipo do imóvel</th>
+		 				<th>Bairro</th>
+		 				<th>Valor do aluguel</th>
+		 				<th>Valor do IPTU</th>
 		 				<th>Ações</th>
 		 			</thead>
 		 			<tbody>
-		 				<tr th:each="prof,conta : ${todosProfissionais}">
+		 				<tr th:each="im,conta : ${todosImoveis}">
 		 					<td th:text="${conta.count}"></td>
-		 					<td th:text="${prof.nome}"></td>
-		 					<td th:text="${prof.email}"></td>
-		 					<td th:text="${prof.creci}"></td>
-		 					<td th:text="${prof.telefone01}"></td>
-		 					<td th:text="${prof.telefone02}"></td>
-		 					<td th:text="${prof.valor_hora}"></td>
-		 					<td> Imagens </td>
+		 					<td th:text="${im.cliente.nome_cliente}"></td>
+		 					<td th:text="${im.tipoimovel.descricao}"></td>
+		 					<td th:text="${im.bairro}"></td>
+		 					<td th:text="${im.valor_aluguel}"></td>
+		 					<td th:text="${im.valor_iptu}"></td>
+		 					<td> 
+		 					
+		 						<!-- Edição --> 
+									<a data-th-href="@{/kyzimobiliaria/imovel/{id}(id=${im.id_imovel})}" class="btn btn-default btn-xs" 
+									   title="Editar" data-toggle="tooltip" data-placement="top"> 
+									   <span class="glyphicon glyphicon-pencil"></span>
+								  </a>
+								  <button title="Excluir" th:attr="id=${im.id_imovel}" onclick="modalExcluir(this.id)"
+								      class="btn btn-default btn-xs">
+								      <span class="glyphicon glyphicon-trash"></span> 
+								  </button>
+								  <a data-th-href="@{/kyzimobiliaria/locacao/{id}(id=${im.id_imovel})}"
+								  	  title="Locar" class="btn btn-default btn-xs">
+								      <span class="glyphicon glyphicon-share"></span> 
+								  </a>
+		 					
+		 					</td>
 		 				</tr>	 			
 		 			</tbody>
 		 		</table>
-		 	</div> <!-- fim container -->        
+		 	</div> <!-- fim container -->  
+		 	
+		 	<div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+			<div th:replace="default/fragment-java-script :: modal-imovel-js"></div>  
+			</br>
+			</br>	
 		</main>
+		
+		 
 	</body>
 </html>

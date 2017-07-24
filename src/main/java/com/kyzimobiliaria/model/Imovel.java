@@ -1,5 +1,7 @@
 package com.kyzimobiliaria.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name="imoveis")
@@ -49,22 +52,22 @@ public class Imovel {
 	
 	private int vagas_garagem;
 	
-	@NotNull(message="{valor.aluguel.vazio}")
-	@Min(100)
-	private double valor_aluguel;
+	@NumberFormat(pattern="#,##0.00")
+	private BigDecimal valor_aluguel; //valor sugerido pelo proprietário
 	
-	@NotNull(message="{iptu.vazio}")
-	@Min(100)
-	private double valor_iptu;
+	@NumberFormat(pattern="#,##0.00")
+	private BigDecimal valor_iptu;
 	
 	private String obs;
 	
 	@OneToOne
 	private TipoImovel tipoimovel;
 	
+	private boolean ativo = true;
+	
 	@ManyToOne
 	@JoinColumn(name="id_cliente", referencedColumnName="id")
-	public Cliente cliente;
+	public Cliente cliente; //proprietário do imóvel
 	
 	public int getId_imovel() {
 		return id_imovel;
@@ -126,18 +129,6 @@ public class Imovel {
 	public void setVagas_garagem(int vagas_garagem) {
 		this.vagas_garagem = vagas_garagem;
 	}
-	public double getValor_aluguel() {
-		return valor_aluguel;
-	}
-	public void setValor_aluguel(double valor_aluguel) {
-		this.valor_aluguel = valor_aluguel;
-	}
-	public double getValor_iptu() {
-		return valor_iptu;
-	}
-	public void setValor_iptu(double valor_iptu) {
-		this.valor_iptu = valor_iptu;
-	}
 	public String getObs() {
 		return obs;
 	}
@@ -155,6 +146,24 @@ public class Imovel {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	public BigDecimal getValor_aluguel() {
+		return valor_aluguel;
+	}
+	public void setValor_aluguel(BigDecimal valor_aluguel) {
+		this.valor_aluguel = valor_aluguel;
+	}
+	public BigDecimal getValor_iptu() {
+		return valor_iptu;
+	}
+	public void setValor_iptu(BigDecimal valor_iptu) {
+		this.valor_iptu = valor_iptu;
+	}
+	public boolean isAtivo() {
+		return ativo;
+	}
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	

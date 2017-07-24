@@ -2,6 +2,8 @@ package com.kyzimobiliaria.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,18 @@ public class ImovelService {
 	}
 
 	public List<Imovel> getTodosImoveis() {
-		return imoveis.findAll();
+		return imoveis.selectTodosImoveis();
+	}
+
+	public Imovel getImovel(int id_imovel) {
+		return imoveis.findOne(id_imovel);
+	}
+	
+	@Transactional
+	public void excluirImovel(int idExcluir) {
+		Imovel imovel = imoveis.findOne(idExcluir);
+		imovel.setAtivo(false);
+		imoveis.save(imovel);
+		
 	}
 }

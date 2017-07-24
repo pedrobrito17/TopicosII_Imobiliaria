@@ -72,22 +72,14 @@
         <div class="form-group">
           <label for="creci" class="col-sm-2 control-label">Valor da hora/trabalho</label>
           <div class="col-sm-6">
-            <input id="hora_trabalho" type="text" class="form-control" th:field="*{valor_hora}"/>
+            <input id="hora_trabalho" type="text" class="form-control maskmoney-js" th:field="*{valor_hora}"/>
           </div>
-        </div>
-        
-        <!-- SENHA -->
-        <div class="form-group">
-          <label for="senha" class="col-sm-2 control-label">Senha</label>
-          <div class="col-sm-6">
-            <input id="senha" type="password" class="form-control" th:field="*{senha}"/>
-          </div>
-        </div>   
+        </div> 
                 
         <!-- BOTAO CADASTRAR -->
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          <div class="col-sm-offset-2 col-sm-12">
+            <button type="submit" class="btn btn-primary" style="width:50%; margin:0px;">Cadastrar profissional</button>
           </div>
         </div>
       </div>
@@ -95,7 +87,8 @@
   </form>
          	
         </div>
-
+        <div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+		<div th:replace="default/fragment-java-script :: maskmoney"></div>
 		</main>
 	</body>
 </html>

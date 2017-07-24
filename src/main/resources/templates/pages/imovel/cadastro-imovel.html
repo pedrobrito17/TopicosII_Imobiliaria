@@ -18,6 +18,7 @@
         	<!-- MENSAGENS -->
 	        <div th:include="default/mensagens-de-alerta :: mensagem-sucesso"></div>
 	        <div th:include="default/mensagens-de-alerta :: mensagem-erro"></div>  
+	        <div th:include="default/mensagens-de-alerta :: mensagem-erro-simples"></div>  
 
 		    <div class="panel panel-default">
 		      <div class="panel-heading">
@@ -32,7 +33,7 @@
 		        <div class="form-group">
 		          <label for="cpf" class="col-sm-2 control-label">CPF do proprietário</label>
 		          <div class="col-sm-6">
-		            <input id="cpf" type="text" class="form-control name="cpfProprietario"/>
+		            <input id="cpf" type="text" class="form-control" name="cpf"/>
 		          </div>
 		        </div>
 				
@@ -72,8 +73,8 @@
 		        <div class="form-group">
 		          <label for="tipo_imovel" class="col-sm-2 control-label">Tipo do Imóvel</label>
 		          <div class="col-sm-6">
-		            <select th:each="tipo ${todosTipoImoveis}" th:field="*{tipoimovel}">
-		            	<option th:text="${tipo.descricao}" th:value="${tipo.id_tipoimovel}"></option>
+		            <select class="form-control"  th:field="*{tipoimovel}">
+		            	<option th:each="tipo : ${tiposImovel}" th:text="${tipo.descricao}" th:value="${tipo.id_tipoimovel}">teste</option>
 		            </select>
 		          </div>
 		        </div>
@@ -122,7 +123,7 @@
 		        <div class="form-group">
 		          <label for="valor_aluguel" class="col-sm-2 control-label">Valor do aluguel</label>
 		          <div class="col-sm-6">
-		            <input id="valor_aluguel" type="number" class="form-control" th:field="*{valor_aluguel}"/>
+		            <input id="valor_aluguel" type="text" class="form-control maskmoney-js" th:field="*{valor_aluguel}"/>
 		          </div>
 		        </div>
 		        
@@ -130,7 +131,7 @@
 		        <div class="form-group">
 		          <label for="valor_iptu" class="col-sm-2 control-label">Valor do IPTU</label>
 		          <div class="col-sm-6">
-		            <input id="valor_iptu" type="number" class="form-control" th:field="*{valor_iptu}"/>
+		            <input id="valor_iptu" type="text" class="form-control maskmoney-js" th:field="*{valor_iptu}"/>
 		          </div>
 		        </div>
 		        
@@ -146,8 +147,8 @@
 		                
 		        <!-- BOTAO CADASTRAR -->
 		        <div class="form-group">
-		          <div class="col-sm-offset-2 col-sm-10">
-		            <button type="submit" class="btn btn-primary">Cadastrar</button>
+		          <div class="col-sm-offset-2 col-sm-12">
+		            <button type="submit" class="btn btn-primary" style="width:50%; margin:0px;">Cadastrar imóvel</button>
 		          </div>
 		        </div>
 		      </div>
@@ -155,7 +156,9 @@
 		  </form>
          	
         </div>
-
+		
+		<div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+		<div th:replace="default/fragment-java-script :: maskmoney"></div>
 		</main>
 	</body>
 </html>

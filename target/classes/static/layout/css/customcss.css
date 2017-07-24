@@ -1,12 +1,16 @@
 
  main{
  	margin-top: 120px;
+ 	min-height:100%;
+
  }
  
- footer{
- 	min-margin-top
- }
- 
+ .footer {
+
+    bottom:0;
+    width:100%;
+}
+
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;

@@ -1,0 +1,126 @@
+<th:block th:fragment="modal-imovel-js">	
+
+	<div id="myModal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <!-- dialog body -->
+	      <div class="modal-body">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        	Você tem certeza que deseja excluir este imóvel?
+	      </div>
+
+	      <div class="modal-footer">      	
+	      	<form th:action="@{/kyzimobiliaria/excluir/imovel}" method="POST">
+	      		<div class="hidden" id="idForm"></div>
+	      		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	      		<button type="submit" class="btn btn-primary">Confirmar</button></div>
+	      	</form>
+	      	
+	    </div>
+	  </div>
+	</div>
+
+	<script>
+	    function modalExcluir(id){    // wire up the OK button to dismiss the modal when shown
+	    	document.getElementById('idForm').innerHTML = "<input type='text' name='id' value="+id+" />";
+	    	$("#myModal").modal();
+	    }
+	</script>
+</th:block>	
+
+<th:block th:fragment="datepicker">
+	<script th:src="@{/webjars/bootstrap-datepicker/1.6.4/dist/js/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap-datepicker/1.6.4/dist/locales/bootstrap-datepicker.pt-BR.min.js}"></script>
+
+       <script>
+		/* componente datepicker para exibição de um calendário no campo de data */
+		$('document').ready(function() {
+			$('.datepicker').datepicker({
+				format : "dd/mm/yyyy",
+				language : "pt-BR",
+				autoclose : true
+			});
+		});
+	</script>
+</th:block>
+
+<th:block th:fragment="modal-cliente-js">	
+
+	<div id="myModal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <!-- dialog body -->
+	      <div class="modal-body">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        	Você tem certeza que deseja excluir este cliente?
+	      </div>
+
+	      <div class="modal-footer">      	
+	      	<form th:action="@{/kyzimobiliaria/excluir/cliente}" method="POST">
+	      		<div class="hidden" id="idForm"></div>
+	      		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	      		<button type="submit" class="btn btn-primary">Confirmar</button></div>
+	      	</form>
+	      	
+	    </div>
+	  </div>
+	</div>
+
+	<script>
+	    function modalExcluir(id){    // wire up the OK button to dismiss the modal when shown
+	    	document.getElementById('idForm').innerHTML = "<input type='text' name='id' value="+id+" />";
+	    	$("#myModal").modal();
+	    }
+	</script>
+</th:block>	
+
+<th:block th:fragment="modal-profissional-js">	
+
+	<div id="myModal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <!-- dialog body -->
+	      <div class="modal-body">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        	Você tem certeza que deseja excluir este profissional?
+	      </div>
+
+	      <div class="modal-footer">      	
+	      	<form th:action="@{/kyzimobiliaria/excluir/profissional}" method="POST">
+	      		<div class="hidden" id="idForm"></div>
+	      		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	      		<button type="submit" class="btn btn-primary">Confirmar</button></div>
+	      	</form>
+	      	
+	    </div>
+	  </div>
+	</div>
+
+	<script>
+	    function modalExcluir(id){    // wire up the OK button to dismiss the modal when shown
+	    	document.getElementById('idForm').innerHTML = "<input type='text' name='id' value="+id+" />";
+	    	$("#myModal").modal();
+	    }
+	</script>
+</th:block>	
+
+<th:block th:fragment="bootstrap-jquery">
+	<script th:src="@{/layout/js/jquery-3.1.1.min.js}"></script> <!--Adiciona o JQuery -->
+  	<script th:src="@{/layout/js/bootstrap.min.js}"></script> <!-- Adiciona o javascript Bootstrap -->  
+</th:block>
+
+<th:block data-th-fragment="maskmoney">  
+  
+  <script data-th-src="@{/webjars/jquery-maskmoney/3.0.2/dist/jquery.maskMoney.min.js}"></script>
+	<script>
+		/* Biblioteca Maskmoney */
+		$(function() {
+			$('.maskmoney-js').maskMoney({
+				allowNegative : false,
+				thousands : '.',
+				decimal : ',',
+				affixesStay : false
+			});
+		});
+	</script>
+</th:block>

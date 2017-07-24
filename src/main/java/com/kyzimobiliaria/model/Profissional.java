@@ -1,6 +1,8 @@
 package com.kyzimobiliaria.model;
 
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name="profissional")
@@ -26,9 +29,6 @@ public class Profissional {
 	@Email(message="{email.invalido}")
 	private String email;
 	
-	@NotEmpty(message="{senha.vazia}")
-	private String senha;
-	
 	@NotEmpty(message="{telefone.vazio}")
 	private String telefone01;
 	
@@ -37,7 +37,10 @@ public class Profissional {
 	@NotNull(message="{creci.vazio}")
 	private int creci;
 	
-	private double valor_hora;
+	@NumberFormat(pattern="#,##0.00")
+	private BigDecimal valor_hora;
+	
+	private boolean ativo = true;
 
 	public int getId_profissional() {
 		return id_profissional;
@@ -79,11 +82,13 @@ public class Profissional {
 		this.creci = creci;
 	}
 
-	public double getValor_hora() {
+	
+
+	public BigDecimal getValor_hora() {
 		return valor_hora;
 	}
 
-	public void setValor_hora(double valor_hora) {
+	public void setValor_hora(BigDecimal valor_hora) {
 		this.valor_hora = valor_hora;
 	}
 
@@ -95,12 +100,12 @@ public class Profissional {
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
+	public boolean isAtivo() {
+		return ativo;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	

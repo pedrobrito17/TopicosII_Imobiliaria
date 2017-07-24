@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+	
+	<body>
+		<main layout:fragment="conteudo-principal"></br>
+        
+        <div class="container">
+       
+     	<form class="form-horizontal" th:action="@{/kyzimobiliaria/locacao/salvar}" 
+        	  method="post" th:object="${locacao}">
+        	  
+        	<!-- MENSAGENS -->
+	        <div th:include="default/mensagens-de-alerta :: mensagem-sucesso"></div>
+	        <div th:include="default/mensagens-de-alerta :: mensagem-erro"></div>  
+	        <div th:include="default/mensagens-de-alerta :: mensagem-erro-simples"></div>  
+
+		    <div class="panel panel-default">
+		      <div class="panel-heading">
+		        <div class="clearfix">
+		          <h1 class="panel-title pull-left" style="padding-top: 6px;">Locação de imóvel</h1>
+		        </div>
+		      </div>
+		
+		      <div class="panel-body">
+		      
+		      <!--  CPF DO INQUILINO -->
+		        <div class="form-group">
+		          <label for="cpf" class="col-sm-2 control-label">CPF do inquilino</label>
+		          <div class="col-sm-6">
+		            <input id="cpf" type="text" class="form-control" name="cpf"/>
+		          </div>
+		        </div>
+				
+		        <!--  CRECI DO PROFISSIONAL -->
+		        <div class="form-group">
+		          <label for="creci" class="col-sm-2 control-label">CRECI do profissional</label>
+		          <div class="col-sm-6">
+		            <input id="creci" type="text" class="form-control" name="creci"/>
+		          </div>
+		        </div>
+		        
+		         <!--  VALOR DO ALUGUEL -->
+		        <div class="form-group">
+		          <label class="col-sm-2 control-label">Valor do aluguel</label>
+		          <div class="col-sm-6">
+		            <input type="text" class="form-control maskmoney-js" th:field="*{valor_aluguel}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- PERCENTUAL MULTA -->
+		        <div class="form-group">
+		          <label for="cep" class="col-sm-2 control-label">Percentual da multa</label>
+		          <div class="col-sm-6">
+		            <input id="cep" type="text" class="form-control" th:field="*{percentual_multa}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- DIA DO VENCIMENTO -->
+		        <div class="form-group">
+		          <label for="dia_vencimento" class="col-sm-2 control-label">Dia do vencimento</label>
+		          <div class="col-sm-6">
+		            <input id="dia_vencimento" type="number" class="form-control" th:field="*{venc}"/>
+		          </div>
+		        </div>
+		        
+		        <!--  DATA DO INICIO DO CONTRATO  -->
+		        <div class="form-group">
+		          <label for="tipo_imovel" class="col-sm-2 control-label">Data do início do contrato</label>
+		          <div class="col-sm-6">
+		            <input id="inicio_contrato" type="text" class="form-control datepicker" th:field="*{data_inicio_contrato}"/>
+		          </div>
+		        </div>
+		        
+		        <!--  DATA DO FIM DO CONTRATO -->
+		        <div class="form-group">
+		          <label for="metragem" class="col-sm-2 control-label">Data fim do contrato</label>
+		          <div class="col-sm-6">
+		            <input id="metragem" type="text" class="form-control datepicker" th:field="*{data_fim_contrato}"/>
+		          </div>
+		        </div>
+		       
+		        
+		        <!-- OBSERVAÇÕES -->
+		        <div class="form-group">
+				  <label for="observacoes" class="col-sm-2 control-label">Observações</label>
+				  <div class="col-sm-6">
+				  	<textarea class="form-control" rows="5" id="observacoes" th:field="*{observacao}"></textarea>
+				  </div>
+				</div>
+		        
+		
+		                
+		        <!-- BOTAO SALVAR -->
+		        <div class="form-group">
+		          <div class="col-sm-offset-2 col-sm-12">
+		            <button type="submit" class="btn btn-primary" style="width:50%; margin:0px;">Salvar locação</button>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </form>
+         	
+        </div>
+        
+        <div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+        <div th:replace="default/fragment-java-script :: maskmoney"></div>
+        <div th:replace="default/fragment-java-script :: datepicker"></div>
+        
+
+		</main>
+	</body>
+</html>

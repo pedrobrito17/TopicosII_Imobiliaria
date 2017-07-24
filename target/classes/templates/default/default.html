@@ -54,15 +54,13 @@
                         <a th:href="@{/kyzimobiliaria/cadastroimovel}">Imóvel</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Serviços</a>
-                    </li>
-                    <li class="page-scroll">
                         <div class="dropdown">
                           <button class="dropbtn">BUSCAR</button>
                           <div class="dropdown-content">
                             <a th:href="@{/kyzimobiliaria/buscar/clientes}">Cliente</a>
                             <a th:href="@{/kyzimobiliaria/buscar/profissional}">Profissional</a>
-                            <a th:href="@{/kyzimobiliaria/imoveis}">Imóvel</a>
+                            <a th:href="@{/kyzimobiliaria/buscar/imoveis}">Imóvel</a>
+                            <a th:href="@{/kyzimobiliaria/buscar/locacoes}">Locações</a>
                           </div>
                         </div>
                     </li>
@@ -82,7 +80,7 @@
 
     
     <!-- Footer -->
-    <footer class="text-center">        
+    <footer class="text-center footer">        
         <div class="footer-below">
             <div class="container">
                 <div class="row">
@@ -94,8 +92,7 @@
         </div>
     </footer>   
     
-    <script th:src="@{/layout/js/jquery-3.1.1.min.js}"></script> <!--Adiciona o JQuery -->
-    <script th:src="@{/layout/js/bootstrap.min.js}"></script> <!-- Adiciona o javascript Bootstrap -->
+
     <script th:src="@{/layout/js/meujs.js}"></script> <!-- Adiciona meu JS -->
 
 </body>

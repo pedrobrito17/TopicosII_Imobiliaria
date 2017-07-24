@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+
+	
+	<body>
+		<main layout:fragment="conteudo-principal"></br>
+        <div class="container">
+        
+        	<form class="form-horizontal" th:action="@{/kyzimobiliaria/cadastrarprofissional}" 
+        	  method="post" th:object="${profissional}">
+
+		     <div th:include="default/mensagens-de-alerta :: mensagem-sucesso"></div>
+		     <div th:include="default/mensagens-de-alerta :: mensagem-erro"></div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="clearfix">
+          <h1 class="panel-title pull-left" style="padding-top: 6px;">Edição do profissional</h1>
+        </div>
+      </div>
+
+      <div class="panel-body">
+		
+		
+		<input th:field="${profissional.id_profissional}" th:value="${profissional.id_profissional}" class="hidden"/>
+		
+        <!--  NOME -->
+        <div class="form-group">
+          <label for="nome" class="col-sm-2 control-label">Nome</label>
+          <div class="col-sm-6">
+            <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+          </div>
+        </div>
+        
+        <!--  EMAIL -->
+        <div class="form-group">
+          <label for="email" class="col-sm-2 control-label">E-mail</label>
+          <div class="col-sm-6">
+            <input id="email" type="text" class="form-control" th:field="*{email}"/>
+          </div>
+        </div>
+        
+        <!-- TELEFONE01 -->
+        <div class="form-group">
+          <label for="telefon01" class="col-sm-2 control-label">Telefone 01</label>
+          <div class="col-sm-6">
+            <input id="telefone01" type="text" class="form-control" th:field="*{telefone01}"/>
+          </div>
+        </div>
+        
+        <!-- TELEFONE02 -->
+        <div class="form-group">
+           <label for="telefone02" class="col-sm-2 control-label">Telefone02</label>
+          <div class="col-sm-6">
+            <input id="telefone02" type="text" class="form-control" th:field="*{telefone02}"/>
+          </div>
+        </div>
+        
+        
+        <!-- CRECI -->
+        <div class="form-group">
+          <label for="creci" class="col-sm-2 control-label">CRECI</label>
+          <div class="col-sm-6">
+            <input id="creci" type="text" class="form-control" th:field="*{creci}"/>
+          </div>
+        </div>
+        
+        <!-- HORA DE TRABALHO -->
+        <div class="form-group">
+          <label for="creci" class="col-sm-2 control-label">Valor da hora/trabalho</label>
+          <div class="col-sm-6">
+            <input id="hora_trabalho" type="text" class="form-control maskmoney-js" th:field="*{valor_hora}"/>
+          </div>
+        </div> 
+                
+        <!-- BOTAO CADASTRAR -->
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-12">
+            <button type="submit" class="btn btn-primary" style="width:50%; margin:0px;">Salvar alterações</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+         	
+        </div>
+        
+        <div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+		<div th:replace="default/fragment-java-script :: maskmoney"></div>
+		</main>
+	</body>
+</html>

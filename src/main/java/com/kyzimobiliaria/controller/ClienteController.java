@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kyzimobiliaria.model.Cliente;
+import com.kyzimobiliaria.model.Imovel;
 import com.kyzimobiliaria.service.ClienteService;
 
 @Controller
@@ -41,8 +43,8 @@ public class ClienteController {
 			return mv;
 		}
 		clienteService.salvarCliente(cliente);
-		attributes.addFlashAttribute("mensagem", "Cadastro realizado com sucesso!");
-		return new ModelAndView("redirect:/kyzimobiliaria/cadastro-cliente");
+		attributes.addFlashAttribute("mensagem", "Cliente salvo com sucesso!");
+		return new ModelAndView("redirect:/kyzimobiliaria/buscar/clientes");
 	}
 	
 	@RequestMapping("/buscar/clientes")
@@ -57,26 +59,18 @@ public class ClienteController {
 		return todosClientes;
 	}
 	
+	@RequestMapping("/cliente/{id}")
+	public ModelAndView getPageEdicaoImovel(@PathVariable("id") long idCliente){
+		ModelAndView mv = new ModelAndView("/pages/cliente/edicao");
+		Cliente cliente = clienteService.getClienteId(idCliente);
+		mv.addObject("cliente", cliente);
+		return mv;		
+	}
 	
-/*	@PostMapping("/salvar")
-	public ModelAndView postsalvar(@Valid Cliente cliente, BindingResult result, 
-			RedirectAttributes attributes){
-		if(result.hasErrors()){
-			return getPagePainelCliente(cliente);
-		}
-		clienteService.salvarCliente(cliente);
-		attributes.addFlashAttribute("mensagem", "Seus dados foram alterados com sucesso!");
-		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/painel-cliente");
-		mv.addObject(cliente);
+	@PostMapping("/excluir/cliente")
+	public ModelAndView excluirCliente(long id){
+		clienteService.excluir(id);
+		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/buscar/clientes");
 		return mv;
-	}*/
-	
-	/*@RequestMapping(value="/deletarcliente/{id}", method = RequestMethod.GET) 
-	public ModelAndView deletarCliente(@PathVariable("id") Long id){
-		Cliente cliente = clienteService.getClienteId(id);
-		clienteService.deletarCliente(cliente);
-		return new ModelAndView("redirect:/kyzimobiliaria/clientes");
-	}*/
-	
-	
+	}
 }

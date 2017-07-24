@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+	
+	
+	<body>
+		<main layout:fragment="conteudo-principal"></br>
+        
+        <div class="container">
+       
+     	<form class="form-horizontal" th:action="@{/kyzimobiliaria/cadastrarimovel}" 
+        	  method="post" th:object="${imovel}">
+        	  
+        	<!-- MENSAGENS -->
+	        <div th:include="default/mensagens-de-alerta :: mensagem-sucesso"></div>
+	        <div th:include="default/mensagens-de-alerta :: mensagem-erro"></div>  
+	        <div th:include="default/mensagens-de-alerta :: mensagem-erro-simples"></div>  
+
+		    <div class="panel panel-default">
+		      <div class="panel-heading">
+		        <div class="clearfix">
+		          <h1 class="panel-title pull-left" style="padding-top: 6px;">Cadastro do imóvel</h1>
+		        </div>
+		      </div>
+		
+		      <div class="panel-body">
+		      
+		      <input th:field="${imovel.id_imovel}" th:value="${imovel.id_imovel}" class="hidden"/>
+		      
+		      <!--  CPF DO PROPRIETÁRIO -->
+		        <div class="form-group">
+		          <label for="cpf" class="col-sm-2 control-label">CPF do proprietário</label>
+		          <div class="col-sm-6">
+		            <input id="cpf" type="text" class="form-control" name="cpf" th:value="${imovel.cliente.cpf}"/>
+		          </div>
+		        </div>
+				
+		        <!--  ENDEREÇO -->
+		        <div class="form-group">
+		          <label for="endereco" class="col-sm-2 control-label">Endereço</label>
+		          <div class="col-sm-6">
+		            <input id="endereco" type="text" class="form-control" th:field="*{endereco}"/>
+		          </div>
+		        </div>
+		        
+		         <!--  BAIRRO -->
+		        <div class="form-group">
+		          <label for="bairro" class="col-sm-2 control-label">Bairro</label>
+		          <div class="col-sm-6">
+		            <input id="bairro" type="text" class="form-control" th:field="*{bairro}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- CEP -->
+		        <div class="form-group">
+		          <label for="cep" class="col-sm-2 control-label">CEP</label>
+		          <div class="col-sm-6">
+		            <input id="cep" type="text" class="form-control" th:field="*{cep}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- Ponto de referência -->
+		        <div class="form-group">
+		          <label for="pontoref" class="col-sm-2 control-label">Ponto de referência</label>
+		          <div class="col-sm-6">
+		            <input id="pontoref" type="text" class="form-control" th:field="*{pontodereferencia}"/>
+		          </div>
+		        </div>
+		        
+		        <!--  TIPO DO IMOVEIS -->
+		        <div class="form-group">
+		          <label for="tipo_imovel" class="col-sm-2 control-label">Tipo do Imóvel</label>
+		          <div class="col-sm-6">
+		            <select class="form-control"  th:field="*{tipoimovel}">
+		            	<option th:each="tipo : ${tiposImovel}" th:text="${tipo.descricao}" 
+		            		th:value="${tipo.id_tipoimovel}">teste</option>
+		            </select>
+		          </div>
+		        </div>
+		        
+		        <!--  METRAGEM -->
+		        <div class="form-group">
+		          <label for="metragem" class="col-sm-2 control-label">Metragem</label>
+		          <div class="col-sm-6">
+		            <input id="metragem" type="number" class="form-control" th:field="*{metragem}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- DORMITORIOS -->
+		        <div class="form-group">
+		          <label for="dormitorios" class="col-sm-2 control-label">Dormitórios</label>
+		          <div class="col-sm-6">
+		            <input id="dormitorios" type="number" class="form-control" th:field="*{dormitorios}"/>
+		          </div>
+		        </div>
+
+				<!-- BANHEIROS -->
+		        <div class="form-group">
+		          <label for="bainheiros" class="col-sm-2 control-label">Banheiros</label>
+		          <div class="col-sm-6">
+		            <input id="banheiros" type="number" class="form-control" th:field="*{banheiros}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- SUITES -->
+		        <div class="form-group">
+		          <label for="suites" class="col-sm-2 control-label">Suítes</label>
+		          <div class="col-sm-6">
+		            <input id="suites" type="number" class="form-control" th:field="*{suites}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- VAGAS NA GARAGEM -->
+		        <div class="form-group">
+		          <label for="vagas" class="col-sm-2 control-label">Vagas garagem</label>
+		          <div class="col-sm-6">
+		            <input id="vagas" type="number" class="form-control" th:field="*{vagas_garagem}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- VALOR DO ALUGUEL -->
+		        <div class="form-group">
+		          <label for="valor_aluguel" class="col-sm-2 control-label">Valor do aluguel</label>
+		          <div class="col-sm-6">
+		            <input id="valor_aluguel" type="text" class="form-control maskmoney-js" th:field="*{valor_aluguel}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- VALOR DO IPTU -->
+		        <div class="form-group">
+		          <label for="valor_iptu" class="col-sm-2 control-label">Valor do IPTU</label>
+		          <div class="col-sm-6">
+		            <input id="valor_iptu" type="text" class="form-control maskmoney-js" th:field="*{valor_iptu}"/>
+		          </div>
+		        </div>
+		        
+		        <!-- OBSERVAÇÕES -->
+		        <div class="form-group">
+				  <label for="observacoes" class="col-sm-2 control-label">Observações</label>
+				  <div class="col-sm-6">
+				  	<textarea class="form-control" rows="5" id="observacoes" th:field="*{obs}"></textarea>
+				  </div>
+				</div>
+		        
+		
+		                
+		        <!-- BOTAO SALVAR ALTERAÇÕES -->
+		        <div class="form-group">
+		          <div class="col-sm-offset-2 col-sm-10">
+		            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </form>
+         	
+        </div>		
+        
+        <div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+        <div th:replace="default/fragment-java-script :: maskmoney"></div>	
+		</main>
+
+	</body>
+</html>

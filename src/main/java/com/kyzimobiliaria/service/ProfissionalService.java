@@ -2,6 +2,8 @@ package com.kyzimobiliaria.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,24 +16,34 @@ public class ProfissionalService {
 	@Autowired
 	private Profissionais profissionais;
 	
+	@Transactional
 	public void salvarProfissional(Profissional profissional){
-		profissionais.save(profissional);
-	}
+		Profissional profissionalDeletado = profissionais.findByCreci(profissional.getCreci());
+		if(profissionalDeletado != null){
+			profissional.setId_profissional(profissionalDeletado.getId_profissional());
+			profissionais.save(profissional);
+		}
 		
-	public Profissional getProfissional(String email, String senha){
-		return profissionais.findByEmailAndSenha(email, senha);
+		profissionais.save(profissional);
 	}
 
 	public Profissional getProfissionalId(int id) {
 		return profissionais.getOne(id);
 	}
-
-	public void deletarProfissional(Profissional profissional) {
-		profissionais.delete(profissional);		
+	
+	@Transactional
+	public void deletarProfissional(int id) {
+		Profissional profissional = profissionais.findOne(id);
+		profissional.setAtivo(false);
+		profissionais.save(profissional);		
 	}
 
 	public List<Profissional> getTodosProfissionais() {
-		return profissionais.findAll();
+		return profissionais.selectTodosProfissionais();
+	}
+
+	public Profissional getProfissionalPeloCreci(int creci) {
+		return profissionais.findByCreci(creci);
 	}
 
 }

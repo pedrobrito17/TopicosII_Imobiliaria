@@ -8,6 +8,7 @@
 	<body>
 	 	<main layout:fragment="conteudo-principal"></br>
 	 		<div class="container">
+	 			<h3>Profissionais cadastrados</h3></br>
 		 		<table class="table table-striped">
 		 			<thead>
 		 				<th>#</th>
@@ -28,11 +29,26 @@
 		 					<td th:text="${prof.telefone01}"></td>
 		 					<td th:text="${prof.telefone02}"></td>
 		 					<td th:text="${prof.valor_hora}"></td>
-		 					<td> Imagens </td>
+		 					<td> 
+								<!-- Edição --> 
+									<a data-th-href="@{/kyzimobiliaria/profissional/{id}(id=${prof.id_profissional})}" class="btn btn-default btn-xs" 
+									   title="Editar" data-toggle="tooltip" data-placement="top"> 
+									   <span class="glyphicon glyphicon-pencil"></span>
+								  </a>
+								  <button title="Excluir" th:attr="id=${prof.id_profissional}" onclick="modalExcluir(this.id)"
+								      class="btn btn-default btn-xs">
+								      <span class="glyphicon glyphicon-trash"></span> 
+								  </button>
+							</td>
 		 				</tr>	 			
 		 			</tbody>
 		 		</table>
-		 	</div> <!-- fim container -->        
+		 	</div> <!-- fim container -->     
+		 	</br>
+			</br>   
+			
+			<div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+			<div th:replace="default/fragment-java-script :: modal-profissional-js"></div>
 		</main>
 	</body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{default/default}">	
+	
+	<body>
+	 	<main layout:fragment="conteudo-principal"></br>
+	 		
+	 		<div class="container">
+	 		
+	 			<!-- MENSAGENS -->
+	        	<div th:include="default/mensagens-de-alerta :: mensagem-sucesso"></div>
+	        	
+	        	<h3>Locações</h3></br>
+	        	
+		 		<table class="table table-striped">
+		 			<thead>
+		 				<th>#</th>
+		 				<th>Inquilino</th>
+		 				<th>Locatário</th>
+		 				<th>Profissional</th>
+		 				<th>Aluguel</th>
+		 				<th>Multa (%)</th>
+		 				<th>Vencimento</th>
+		 				<th>Início do contrato</th>
+		 				<th>Fim do contrato</th>
+		 			</thead>
+		 			<tbody>
+		 				<tr th:each="loca,conta : ${locacoes}">
+		 					<td th:text="${conta.count}"></td>
+		 					<td th:text="${loca.inquilino.nome_cliente}"></td>
+		 					<td th:text="${loca.imovel.cliente.nome_cliente}"></td>
+		 					<td th:text="${loca.profissional.nome}"></td>
+		 					<td th:text="${loca.valor_aluguel}"></td>
+		 					<td th:text="${loca.percentual_multa}"></td>
+		 					<td th:text="${loca.venc}"></td>
+		 					<td th:text="${#dates.format({loca.data_inicio_contrato}, 'dd/MM/yyyy')}"></td>
+		 					<td th:text="${#dates.format({loca.data_fim_contrato}, 'dd/MM/yyyy')}"></td>
+		 				</tr>	 			
+		 			</tbody>
+		 		</table>
+		 	</div> <!-- fim container -->  
+		 	
+		 	<div th:replace="default/fragment-java-script :: bootstrap-jquery"></div>
+			<div th:replace="default/fragment-java-script :: modal-imovel-js"></div>  
+		</br>
+		</br>
+		</main>
+		
+		 
+	</body>
+</html>

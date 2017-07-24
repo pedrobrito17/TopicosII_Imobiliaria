@@ -43,9 +43,9 @@ public class ProfissionalController {
 			return mv;
 		}
 		profissionalService.salvarProfissional(profissional);
-		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/cadastroprofissional");
+		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/buscar/profissional");
 		mv.addObject("profissional",  profissional);
-		attributes.addFlashAttribute("mensagem", "Cadastro realizado com sucesso.");
+		attributes.addFlashAttribute("mensagem", "Profissional salvo com sucesso!");
 		return mv;
 	}
 	
@@ -60,24 +60,21 @@ public class ProfissionalController {
 		List<Profissional> todosProfissionais = profissionalService.getTodosProfissionais();
 		return todosProfissionais;
 	}
-/*	@PostMapping("/salvarprofissional")
-	public ModelAndView postsalvar(@Valid Profissional profissional, BindingResult result, 
-			RedirectAttributes attributes){
-		if(result.hasErrors()){
-			return getPagePainelProfissional(profissional);
-		}
-		profissionalService.salvarProfissional(profissional);
-		attributes.addFlashAttribute("mensagem", "Seus dados foram alterados com sucesso!");
-		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/painel-profissional");
-		mv.addObject(profissional);
-		return mv;
-	}*/
 	
-/*	@RequestMapping(value="/deletarprofissional/{id}", method = RequestMethod.GET) 
-	public ModelAndView deletarCliente(@PathVariable("id") int id){
+	@RequestMapping("/profissional/{id}")
+	public ModelAndView getPageEdicaoProfissional(@PathVariable("id") int id){
+		ModelAndView mv = new ModelAndView("/pages/profissional/edicao");
 		Profissional profissional = profissionalService.getProfissionalId(id);
-		profissionalService.deletarProfissional(profissional);
-		return new ModelAndView("redirect:/kyzimobiliaria/loginprofissional");
-	}*/
+		mv.addObject("profissional", profissional);
+		return mv;		
+	}
+	
+	@PostMapping("/excluir/profissional")
+	public ModelAndView excluirProfissional(int id){
+		profissionalService.deletarProfissional(id);
+		ModelAndView mv = new ModelAndView("redirect:/kyzimobiliaria/buscar/profissional");
+		return mv;
+	}
+
 	
 }
