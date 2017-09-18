@@ -15,5 +15,7 @@ public interface Clientes extends JpaRepository<Cliente, String>{
 	
 	@Query(value = "SELECT * FROM cliente where ativo = true", nativeQuery = true)
 	List<Cliente> selectTodosClientes();
+
+	Cliente findByEmail(String email);
 	
 }

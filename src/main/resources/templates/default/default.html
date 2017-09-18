@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 
@@ -35,7 +38,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" th:href="@{/kyzimobiliaria/home}">KYZ Imobiliária</a>
+                <a class="navbar-brand" th:href="@{/}">KYZ Imobiliária</a>
             </div>
 
             <!-- navbar -->
@@ -64,12 +67,22 @@
                           </div>
                         </div>
                     </li>
+                    <li class="page-scroll">
+                        <form action="/logout" method="post" style="margin-top:15px;">
+                        	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        	<button role="button" type="submit" >
+		        				<span class="glyphicon glyphicon-log-out"></span>
+		        				Sair
+		        			</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
             <!-- navbar -->
         </div>
         <!-- /.container-fluid -->
     </nav>
+    
 
     <!-- Main -->
     <section class="main" layout:fragment="conteudo-principal">

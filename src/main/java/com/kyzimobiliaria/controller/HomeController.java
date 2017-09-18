@@ -5,12 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/kyzimobiliaria")
 public class HomeController {
 	
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public ModelAndView getHome(){
 		return new ModelAndView("pages/home");
+	}
+	
+	@RequestMapping("/login")
+	public String getLogin(){
+		return "/entrar";
 	}
 
 }

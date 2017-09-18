@@ -1,7 +1,10 @@
 package com.kyzimobiliaria.model;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +19,15 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name="cliente")
-public class Cliente {
+public class Cliente implements UserDetails{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -51,6 +58,11 @@ public class Cliente {
 	@NotNull(message="{data.nascimento.vazia}")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dt_nascimento;
+	
+	private String password;
+	
+	@OneToMany
+	private Set<Role> permissoes = new HashSet<Role>();
 	
 	@OneToMany
 	private List<Imovel> imoveis;
@@ -153,11 +165,54 @@ public class Cliente {
 		this.ativo = ativo;
 	}
 	
-	
-	
-	
-	
-	
-	
+
+	public Set<Role> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(Set<Role> permissoes) {
+		this.permissoes = permissoes;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return permissoes;
+	}
+
+	@Override
+	public String getPassword() {
+		return this.password;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return this.ativo;
+	}
 	
 }

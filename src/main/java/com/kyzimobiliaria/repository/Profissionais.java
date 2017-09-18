@@ -14,4 +14,6 @@ public interface Profissionais extends JpaRepository<Profissional, Integer>{
 	
 	@Query(value = "SELECT * FROM profissional WHERE ativo = true", nativeQuery = true)
 	List<Profissional> selectTodosProfissionais();
+
+	Profissional findByEmail(String email);
 }

@@ -2,11 +2,23 @@ package com.kyzimobiliaria.model;
 
 
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -16,8 +28,10 @@ import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name="profissional")
-public class Profissional {
+public class Profissional implements UserDetails{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_profissional;
@@ -41,6 +55,14 @@ public class Profissional {
 	private BigDecimal valor_hora;
 	
 	private boolean ativo = true;
+	
+	private String password;
+	
+	@ManyToMany
+    @JoinTable(name="profissional_permissoes", joinColumns=
+    {@JoinColumn(name="prof_id")}, inverseJoinColumns=
+      {@JoinColumn(name="permissoes_id")})
+	private Set<Role> permissoes = new HashSet<Role>();
 
 	public int getId_profissional() {
 		return id_profissional;
@@ -82,7 +104,17 @@ public class Profissional {
 		this.creci = creci;
 	}
 
-	
+	public Set<Role> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(Set<Role> permissoes) {
+		this.permissoes = permissoes;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public BigDecimal getValor_hora() {
 		return valor_hora;
@@ -106,6 +138,44 @@ public class Profissional {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.permissoes;
+	}
+
+	@Override
+	public String getPassword() {
+		return this.password;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return this.ativo;
 	}
 	
 	
